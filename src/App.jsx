@@ -1,18 +1,21 @@
 import react from "react";
-import Fruta from "./components/fruta";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Car from "./pages/car";
+import Other from "./pages/other";
 
 
 class App extends react.Component {
 
-    render() {
+    render(){
         return (
-            <>
-                <Fruta name = {"Manzana"} price={1000}/>
-                <Fruta name = {"Pera"} price={600}/>
-                <Fruta name = {"Mango"} price={800}/>
-                <Fruta name = {"Guanabana"} price={1200}/>
-                <Fruta name = {"Piña"} price={3000}/>
-            </>
+            <BrowserRouter>
+                <Routes>
+                    <Route path ={'/'} element={<Car/>}/>
+                    <Route path ={'/other'} element={<Other/>}/>
+                    <Route path ={'/contac'} element={<h2>Contact page in progress...</h2>}/>
+                    <Route path ={'*'} element={<h2>404 not found</h2>}/>
+                </Routes>
+            </BrowserRouter>
         )
     }
 }

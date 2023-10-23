@@ -2,7 +2,7 @@ import React from "react";
 import Style from "./Fruta.module.css"
 
 
-class Fruta extends React.Component{
+class Fruta extends React.Component {
 
     constructor(props) {
         super()
@@ -13,17 +13,35 @@ class Fruta extends React.Component{
     }
 
     agregar() {
-        this.state.cantidad += 1
-        this.forceUpdate()
+        const { cantidad } = this.state;
+        const { price, bus } = this.props;
+        this.setState({
+            cantidad: cantidad + 1
+        })
+        bus({
+            price,
+            operation: true
+        })
+        // this.state.cantidad += 1
+        // this.forceUpdate()
     }
 
     quitar() {
-        this.state.cantidad -= 1
-        this.forceUpdate()
+        const { cantidad } = this.state;
+        const { price, bus } = this.props;
+        this.setState({
+            cantidad: cantidad - 1
+        })
+        bus({
+            price,
+            operation: false
+        })
+        // this.state.cantidad -= 1
+        // this.forceUpdate()
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className={Style.fruta}>
                 <h2>Nombre: {this.props.name}</h2>
                 <h3>Precio: ${this.props.price}</h3>
