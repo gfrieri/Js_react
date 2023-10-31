@@ -1,61 +1,39 @@
-import React from "react";
-import Style from "./Fruta.module.css"
+import { useState } from "react";
+import Style from "./Fruta.module.css";
 
+const Fruta = ({ name, price, bus }) => {
+    const [cantidad, setCantidad] = useState(0);
 
-class Fruta extends React.Component {
-
-    constructor(props) {
-        super()
-
-        this.state = {
-            cantidad: 0
-        }
-    }
-
-    agregar() {
-        const { cantidad } = this.state;
-        const { price, bus } = this.props;
-        this.setState({
-            cantidad: cantidad + 1
-        })
-        bus({
+    const agregar = () => {
+        setCantidad(cantidadActual => cantidadActual + 1);
+        bus ({
             price,
             operation: true
-        })
-        // this.state.cantidad += 1
-        // this.forceUpdate()
-    }
+        });
+    };
 
-    quitar() {
-        const { cantidad } = this.state;
-        const { price, bus } = this.props;
-        this.setState({
-            cantidad: cantidad - 1
-        })
-        bus({
+    const quitar = () => {
+        setCantidad(cantidadActual => cantidadActual - 1);
+        bus ({
             price,
             operation: false
-        })
-        // this.state.cantidad -= 1
-        // this.forceUpdate()
-    }
+        });
+    };
 
-    render() {
-        return (
-            <div className={Style.fruta}>
-                <h2>Nombre: {this.props.name}</h2>
-                <h3>Precio: ${this.props.price}</h3>
+    return (
+        <div className={Style.fruta}>
+            <h2>Nombre: {name}</h2>
+            <h3>Precio: ${price}</h3>
 
-                <button onClick={this.agregar.bind(this)}>+</button>
-                <button onClick={this.quitar.bind(this)}>-</button>
+            <button onClick={agregar}>+</button>
+            <button onClick={quitar} disabled={cantidad === 0}>-</button>
 
-                <p>Cantidad: {this.state.cantidad}</p>
-                <p>Subtotal: {this.props.price * this.state.cantidad}</p>
+            <p>Cantidad: {cantidad}</p>
+            <p>Subtotal: {price * cantidad}</p>
 
-                <hr />
-            </div>
-        )
-    }
-}
+            <hr />
+        </div>
+    );
+};
 
-export default Fruta
+export default Fruta;
