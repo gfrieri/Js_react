@@ -1,4 +1,3 @@
-
 export default function Acarreo(props) {
 
     const { total } = props
