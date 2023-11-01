@@ -7,7 +7,7 @@ export default function Acarreo(props) {
   return (
     <div>
       <h3>total: {total}</h3>
-      <h3>total: {data}</h3>
+      <h3>Context Acarreo: {data}</h3>
     </div>
   );
 }

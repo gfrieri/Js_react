@@ -34,7 +34,7 @@ const Fruta = ({ name, price, bus }) => {
 
       <p>Cantidad: {cantidad}</p>
       <p>Subtotal: {price * cantidad}</p>
-      <h3>total: {data}</h3>
+      <h3>Context Fruta: {data}</h3>
 
       <hr />
     </div>

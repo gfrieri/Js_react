@@ -22,7 +22,7 @@ const Car = () => {
       <Fruta name={"Piña"} price={3000} bus={acarreo} />
       <hr />
       <Acarreo total={total} />
-      <div>info: {data[0]}</div>
+      <div>Context Car: {data[0]}</div>
     </>
   );
 };

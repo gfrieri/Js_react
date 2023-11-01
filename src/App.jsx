@@ -19,7 +19,7 @@ const App = () => {
           <Route path="*" element={<h2>404 not found</h2>} />
         </Routes>
       </BrowserRouter>
-      <h3>total: {data}</h3>
+      <h3>Context App: {data}</h3>
     </Datacont.Provider>
   );
 };
