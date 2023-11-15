@@ -27,7 +27,7 @@ const Fruta = ({ name, price, img, bus }) => {
     <div className={Style.fruta}>
       <h2>Nombre: {name}</h2>
       <h3>Precio: ${price}</h3>
-      <img src={img} />
+      <img src={img} width="500" height="500" />
 
       <button onClick={agregar}>+</button>
       <button onClick={quitar} disabled={cantidad === 0}>

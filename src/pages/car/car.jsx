@@ -29,11 +29,14 @@ const Car = () => {
 
       const pet_fruta = await Peticion(url_api);
       const frutas = pet_fruta.products;
-      const total_frutas = [];
 
-      frutas.forEach(async (frutas) => {
-        const info_fruta = await Peticion(`${url_api} ${frutas.id}`);
-        total_frutas.push(
+      const total_frutas_promise = frutas.map((frutas) =>
+        Peticion(`${url_api}${frutas.id}`)
+      );
+      const total_frutas_resultado = await Promise.all(total_frutas_promise);
+
+      const total_frutas = total_frutas_resultado.map((info_fruta) => {
+        return (
           <Fruta
             key={info_fruta.id}
             name={info_fruta.name}
@@ -43,10 +46,10 @@ const Car = () => {
           />
         );
       });
-      await setFruta(total_frutas);
+      setFruta(total_frutas);
     };
     Frutas(acarreo);
-  }, []);
+  }, [acarreo]);
 
   return (
     <>
