@@ -13,6 +13,26 @@ const Car = () => {
     });
   }, []);
 
+ const petttt = async () => {
+  const url = 'https://api.predic8.de/shop/v2/products/'
+  const peticion = await fetch(url)
+
+  if (!peticion.ok) {
+    console.log('Petición fallida')
+  }
+
+  const results = await peticion.json()
+  const frutas = results
+  let templateHTML = ''
+
+  //frutas.array.forEach(({id}) => {
+    
+  //});
+
+  console.log(frutas)
+ }
+  petttt()
+
   return (
     <>
       <Fruta name={"Manzana"} price={1000} bus={acarreo} />
