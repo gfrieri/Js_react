@@ -2,7 +2,8 @@ import { useState, useContext } from "react";
 import Style from "./Fruta.module.css";
 import Datacont from "../../dataContext/dataContext";
 
-const Fruta = ({ name, price, bus }) => {
+// eslint-disable-next-line react/prop-types
+const Fruta = ({ name, price, img, bus }) => {
   const [cantidad, setCantidad] = useState(0);
   const data = useContext(Datacont);
 
@@ -26,6 +27,7 @@ const Fruta = ({ name, price, bus }) => {
     <div className={Style.fruta}>
       <h2>Nombre: {name}</h2>
       <h3>Precio: ${price}</h3>
+      <img src={img} />
 
       <button onClick={agregar}>+</button>
       <button onClick={quitar} disabled={cantidad === 0}>

@@ -5,7 +5,7 @@ import Datacont from "./dataContext/dataContext";
 import { useState } from "react";
 
 const App = () => {
-  const [data, setData] = useState(["1", "2", "3"]);
+  const [data] = useState(["1", "2", "3"]);
   return (
     <Datacont.Provider value={data}>
       <BrowserRouter>
