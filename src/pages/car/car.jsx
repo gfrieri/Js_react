@@ -16,13 +16,10 @@ const Car = () => {
 
   const Peticion = async (url) => {
     const pet = await fetch(url);
-
     if (!pet.ok) {
       console.log("Petición fallida");
     }
-
     const res = await pet.json();
-
     return res;
   };
 
@@ -35,19 +32,18 @@ const Car = () => {
       const total_frutas = [];
 
       frutas.forEach(async (frutas) => {
-        const info_fruta = await Peticion(url_api + frutas.id);
+        const info_fruta = await Peticion(`${url_api} ${frutas.id}`);
         total_frutas.push(
           <Fruta
             key={info_fruta.id}
             name={info_fruta.name}
             price={info_fruta.price}
-            img={"https://api.predic8.de/" + info_fruta.image_link}
+            img={`https://api.predic8.de${info_fruta.image_link}`}
             bus={acarreo}
           />
         );
       });
-      setFruta(total_frutas);
-      console.log(total_frutas);
+      await setFruta(total_frutas);
     };
     Frutas(acarreo);
   }, []);
